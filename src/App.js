@@ -3,6 +3,17 @@ import "./quiz.js";
 import './App.css';
 
 class App extends Component() {
+  state = {
+    questions: [],
+  };
+  getQuestions = () => {
+    this.setState({
+      questions: question
+    })
+  }
+  componentDidMount() {
+    this.getQuestions();
+  }
   render() {
     return (
       <>
@@ -14,6 +25,7 @@ class App extends Component() {
             </p>
         
             <button>Start the quiz</button>
+            {this.state.questions.length>0}
       
           </header>
         </div>
