@@ -75,9 +75,11 @@ class QuizApp extends React.Component {
             <p>Welcome to QuizApp</p>
           </header>
           <div className="Container">
-            <button onClick={this.getQuestions}> Start the quiz</button>
-
-            <span className="font"> {this.state.questions}</span>
+            {this.state.buttonClicked ? (
+              <span className="font"> {this.state.questions}</span>
+            ) : (
+              <button onClick={this.getQuestions}> Start the quiz</button>
+            )}
           </div>
           <div>
             <button>Back</button> <button>Next</button>
