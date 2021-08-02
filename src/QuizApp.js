@@ -3,18 +3,17 @@ import React, { Component } from "react";
 import "./App.css";
 
 class QuizApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions: [],
+      initialPoint: 0,
+      finalPoint: "",
+      maxScore: 5,
+    };
+  }
+
   render() {
-    /* state = {
-    questions: [],
-  };
-  getQuestions = () => {
-    this.setState({
-      questions: "",
-    });
-  };
-  componentDidMount() {
-    this.getQuestions();
-  }*/
     const questions = [
       {
         Question1: " Which is the largest country in the world by population?",
@@ -63,13 +62,19 @@ class QuizApp extends React.Component {
       },
     ];
 
+    const getQuestions = () => {
+      this.setState({
+        questions: questions[0],
+      });
+    };
+
     return (
       <>
         <div className="App">
           <header className="App-header">
             <p>Welcome to QuizApp</p>
 
-            <button>Start the quiz</button>
+            <button onClick={getQuestions()}>Start the quiz</button>
           </header>
         </div>
       </>
