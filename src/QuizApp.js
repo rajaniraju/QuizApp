@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 //import { getQuestions } from "./quiz.js";
 import "./App.css";
 
@@ -6,24 +6,25 @@ class QuizApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
+      questions: "",
       initialPoint: 0,
       finalPoint: "",
       maxScore: 5,
+      buttonClicked: false,
     };
   }
-
-  render() {
+  getQuestions = () => {
     const questions = [
-      {
-        Question1: " Which is the largest country in the world by population?",
-        Options: [
-          { Answer: "India", isCorrect: false },
-          { Answer: "USA", isCorrect: false },
-          { Answer: "China", isCorrect: true },
-          { Answer: "Russia", isCorrect: false },
-        ],
-      },
+      "Question1: Which is the largest country in the world by population?",
+
+      // eslint-disable-next-line no-undef
+      /*(Options = [
+        ["India", false],
+        ["USA", false],
+        ["China", true],
+        ["Russia", false],
+      ]),
+      
       {
         Question2: "When did the second world war end?",
         Options: [
@@ -58,24 +59,29 @@ class QuizApp extends React.Component {
           { Answer: "Alexander Graham Bell", isCorrect: true },
           { Answer: "Isaac Newton", isCorrect: false },
           { Answer: "Marie Curie", isCorrect: false },
-        ],
-      },
+        ],*/
     ];
+    this.setState({
+      questions: questions,
+      buttonClicked: true,
+    });
+  };
 
-    const getQuestions = () => {
-      this.setState({
-        questions: questions[0],
-      });
-    };
-
+  render() {
     return (
       <>
         <div className="App">
           <header className="App-header">
             <p>Welcome to QuizApp</p>
-
-            <button onClick={getQuestions()}>Start the quiz</button>
           </header>
+          <div className="Container">
+            <button onClick={this.getQuestions}> Start the quiz</button>
+
+            <span className="font"> {this.state.questions}</span>
+          </div>
+          <div>
+            <button>Back</button> <button>Next</button>
+          </div>
         </div>
       </>
     );
